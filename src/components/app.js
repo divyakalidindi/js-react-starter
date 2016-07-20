@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Welcome from './welcome';
+// import Welcome from './welcome';
 import Immutable from 'immutable';
 import Note from './note';
 import NoteBar from './notebar';
 
 // example class based component (smart component)
-class App extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
 
@@ -13,49 +13,63 @@ class App extends Component {
     this.state = {
       notes: Immutable.Map(),
     };
-    this.noteId = 0;
+    this.noteId = 1;
+
+    this.deleteNote = this.deleteNote.bind(this);
+    this.updateNote = this.updateNote.bind(this);
+    this.createNewNote = this.createNewNote.bind(this);
+    this.testmethod = this.testmethod.bind(this);
   }
 
+  componentWillMount() {
+    this.createNewNote('test');
+  }
   deleteNote(id) {
     this.setState({
       notes: this.state.notes.delete(id),
     });
   }
 
-  updateNote() {
+  testmethod() {
+    console.log('came here');
+  }
+  updateNote(id, fields) {
     this.setState({
       notes: this.state.notes.update(id, (n) => { return Object.assign({}, n, fields); }),
     });
   }
 
   createNewNote(title) {
-    // const id = this.noteId;
+    console.log(title);
+    const id = this.noteId;
     const note = {
-      title: '',
+      title,
       text: '',
-      x: 0,
-      y: 0,
-      // zIndex: this.noteId,
-      zIndex: 0,
+      x: 200,
+      y: 200,
+      zIndex: this.noteId,
     };
-  this.noteId++;
-  this.setState( {
-    notes: this.state.notes.set(id, note),
-  });
-}
+    console.log(id);
+    this.noteId++;
+    this.setState({
+      notes: this.state.notes.set(id, note),
+    });
+  }
 
-render() {
-  return (
-    <div>
-      <NoteBar newNote = {title => this.createNewNote(title)}
-      {this.states.notes.entrySeq().map(([id, note]) => {
-        return (
-          <Note note={note} key = {id} id = {id}/>
-        );
-      }
-    )}
-    </div>
+  render() {
+    this.testmethod();
+    console.log(this.state.notes);
+    return (
+      <div>
+        <NoteBar newNote={this.createNewNote} />
+        {this.state.notes.entrySeq().map(([id, note]) => {
+          return (
+            <Note updateNote={this.updateNote}
+              onDel={this.deleteNote} note={note} key={id} id={id}
+            />
+          );
+        }
+      )}
+      </div>
   );
-}}
-
-export default App;
+  }}
