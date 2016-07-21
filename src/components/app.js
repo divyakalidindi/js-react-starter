@@ -22,7 +22,7 @@ export default class App extends Component {
   }
 
   componentWillMount() {
-    this.createNewNote('test');
+    this.createNewNote('testing');
   }
   deleteNote(id) {
     this.setState({
@@ -45,8 +45,8 @@ export default class App extends Component {
     const note = {
       title,
       text: '',
-      x: 200,
-      y: 200,
+      x: 20,
+      y: 20,
       zIndex: this.noteId,
     };
     console.log(id);

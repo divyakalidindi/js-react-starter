@@ -60,8 +60,9 @@ class Note extends Component {
             </div>
             <div className="pictures">
               <h4>
-                <i onClick={this.onDelete} className="fa fa-trash-o" />
-                <i className="note-mover fa fa-arrows-alt" />
+                <i onClick={this.onDelete} className="fa fa-trash-o fa-3x" id="trash" />
+                <i onEdit={this.updateNote} className="fa fa-pencil fa-3x" id="edit" />
+                <i className="note-mover fa fa-arrows-alt fa-3x" id="move" />
               </h4>
             </div>
           </div>

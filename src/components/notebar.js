@@ -25,8 +25,8 @@ class NoteBar extends Component {
   render() {
     return (
       <div>
-        <input value={this.state.newNoteTitle} onChange={this.onInputChange} placeholder={"Change title!"} />
-        <div onClick={this.createNote}>Create!</div>
+        <input value={this.state.newNoteTitle} onChange={this.onInputChange} placeholder={"new note title"} />
+        <button onClick={this.createNote}>Create!</button>
       </div>
     );
   }

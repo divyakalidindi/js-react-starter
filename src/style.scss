@@ -5,18 +5,33 @@ body {
   margin: 50px;
 }
 
-.main {
+.title-bar {
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: space-between;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
   background-color: white;
-  text-align: center;
-  height: 100px;
-  width: 100px;
-  text-align: center;
+  text-align: left;
+  height: 250px;
+  width: 250px;
   border-style: solid;
   border-width: thin;
   border-color: lightgrey;
-  padding: 20px;
-  font-size: 8px;
+  padding: 5px;
+  font-size: 10px;
+}
+
+.title {
+  font-size: 15px;
+  left: 0;
+  top: 0;
+  padding-left: 10px;
+}
+
+h4 {
+  justify-content: space-between;
+  padding: 10px;
+}
+
+#trash, #edit {
+  padding-right: 15px;
 }
