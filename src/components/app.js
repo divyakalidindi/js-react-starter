@@ -56,6 +56,7 @@ export default class App extends Component {
     });
   }
 
+
   render() {
     this.testmethod();
     console.log(this.state.notes);

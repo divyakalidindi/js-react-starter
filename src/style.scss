@@ -5,33 +5,46 @@ body {
   margin: 50px;
 }
 
-.title-bar {
+.main {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   justify-content: flex-start;
   background-color: white;
-  text-align: left;
+  text-align: center;
   height: 250px;
   width: 250px;
   border-style: solid;
-  border-width: thin;
-  border-color: lightgrey;
+  border-width: thick;
+  border-color: grey;
   padding: 5px;
   font-size: 10px;
 }
 
+.title-bar {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 10px;
+  align-items: left;
+}
+
+
 .title {
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 12px;
+}
+
+.text-area {
+  text-align: left;
   font-size: 15px;
-  left: 0;
-  top: 0;
-  padding-left: 10px;
+  min-height: 160px;
+  min-width: 230px;
+
 }
 
 h4 {
-  justify-content: space-between;
-  padding: 10px;
-}
+  display: flex;
+  justify-content: flex-end;
+  // padding: 9px;
 
-#trash, #edit {
-  padding-right: 15px;
 }
