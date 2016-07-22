@@ -6,11 +6,8 @@ import marked from 'marked';
 class Note extends Component {
   constructor(props) {
     super(props);
-
     // init component state here
     this.state = {
-      // id: props.noteId,
-      // note: props.note,
       isEditing: false,
     };
 
@@ -20,7 +17,6 @@ class Note extends Component {
     this.renderText = this.renderText.bind(this);
     this.renderEdits = this.renderEdits.bind(this);
   }
-
 
   onDelete() {
     this.props.onDel(this.props.id);
@@ -34,7 +30,6 @@ class Note extends Component {
     this.props.updateNote(this.props.id, { text: event.target.value });
   }
 
-
   renderText() {
     if (this.state.isEditing) {
       return <textarea value={this.props.note.text} onChange={this.updateText} />;
@@ -45,18 +40,16 @@ class Note extends Component {
 
   renderEdits() {
     if (this.state.isEditing) {
-      return <i onClick={() => this.setState({ isEditing: false })} className="fa fa-check fa-3x" />;
+      return <i onClick={() => this.setState({ isEditing: false })} className="fa fa-check fa-2x" />;
     } else {
-      return <i onClick={() => this.setState({ isEditing: true })} className="fa fa-pencil fa-3x" />;
+      return <i onClick={() => this.setState({ isEditing: true })} className="fa fa-pencil fa-2x" />;
     }
   }
 
-// del={(id) => this.props.deleteNote(id)}
 // provided by Tim on assignment page
   render() {
-    console.log(this.props.note);
     const title = this.props.note.title;
-    const { x, y, zIndex } = this.props.note;
+    const { x, y } = this.props.note;
     return (
       <Draggable
         handle=".note-mover"
@@ -71,8 +64,8 @@ class Note extends Component {
           <div className="title-bar">
             <h1>{title}</h1>
             {this.renderEdits()}
-            <i onClick={this.onDelete} className="fa fa-trash-o fa-3x" id="trash" />
-            <i className="note-mover fa fa-arrows-alt fa-3x" id="move" />
+            <i onClick={this.onDelete} className="fa fa-trash-o fa-2x" />
+            <i className="note-mover fa fa-arrows-alt fa-2x" id="move" />
           </div>
           <div className="text-area">
             {this.renderText()}

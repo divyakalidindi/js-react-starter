@@ -11,22 +11,18 @@ class NoteBar extends Component {
   }
 
   onInputChange(event) {
-    console.log(event.target.value);
     this.setState({ newNoteTitle: event.target.value });
-    // console.log(this.newNoteTitle);
   }
 
   createNote() {
-    console.log(this.state.newNoteTitle);
     this.props.newNote(this.state.newNoteTitle);
   }
 
-// newNoteTitle={this.state.newNoteTitle}
   render() {
     return (
       <div>
         <input value={this.state.newNoteTitle} onChange={this.onInputChange} placeholder={"new note title"} />
-        <button onClick={this.createNote}>Create!</button>
+        <button onClick={this.createNote}>create</button>
       </div>
     );
   }

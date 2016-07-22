@@ -1,7 +1,7 @@
 body {
   font-family: "Roboto", sans-serif;
   color: rgb(10%, 10%, 10%);
-  background: darken(white, 10%);
+  background: #AFEEEE;
   margin: 50px;
 }
 
@@ -10,44 +10,71 @@ body {
   flex-flow: column nowrap;
   position: fixed;
   background-color: white;
-  text-align: center;
-  // height: auto;
-  // width: auto;
+  text-align: left;
   border-style: solid;
-  border-width: thick;
+  border-width: 3px;
   border-color: grey;
   box-sizing: border-box;
   padding: 5px;
-  font-size: 10px;
-  resize: both;
 }
 
 .title-bar {
   display: flex;
+  align-items: left;
   justify-content: flex-end;
   margin-left: 10px;
-  align-items: left;
 }
 
 h1 {
-  margin-top: 5px;
-  margin-bottom: 10px;
-  align-items: left;
-}
-i {
-  padding: 5px;
+  margin-top: 7px;
 }
 
+i {
+  padding: 8px;
+}
+
+//inheriting for width and height found on http://stackoverflow.com/questions/9374509/100-vs-inherit
 .text-area {
   min-height: 160px;
   text-align: left;
-  height: 90%;
-  width: 90%;
+  height: 100%;
+  width: 100%;
+
   textarea {
     min-height: 160px;
-    resize: both;
     width: inherit;
     height: inherit;
     box-sizing: border-box;
+    font-size: 15px;
   }
+}
+
+// input field
+input{
+  padding: 10px 10px;
+  margin: 4px 0.01px;
+  border: 1px solid;
+  border-color: white;
+  border-radius: 2px;
+  font: inherit;
+  font-size: 25px;
+  color: black;
+}
+
+button {
+  background-color: #ffb732;
+  border-radius: 2px;
+  border: thin;
+  color: white;
+  padding: 11px 10px;
+  text-align: center;
+  text-decoration: none;
+  font: inherit;
+  font-size: 25px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+button:hover:not(active) {
+  background-color: #ffa500;
 }

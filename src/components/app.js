@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import Welcome from './welcome';
 import Immutable from 'immutable';
 import Note from './note';
 import NoteBar from './notebar';
@@ -18,21 +17,18 @@ export default class App extends Component {
     this.deleteNote = this.deleteNote.bind(this);
     this.updateNote = this.updateNote.bind(this);
     this.createNewNote = this.createNewNote.bind(this);
-    this.testmethod = this.testmethod.bind(this);
   }
 
   componentWillMount() {
-    this.createNewNote('testing');
+    this.createNewNote('Welcome!');
   }
+
   deleteNote(id) {
     this.setState({
       notes: this.state.notes.delete(id),
     });
   }
 
-  testmethod() {
-    console.log('came here');
-  }
   updateNote(id, fields) {
     this.setState({
       notes: this.state.notes.update(id, (n) => { return Object.assign({}, n, fields); }),
@@ -40,7 +36,6 @@ export default class App extends Component {
   }
 
   createNewNote(title) {
-    console.log(title);
     const id = this.noteId;
     const note = {
       title,
@@ -49,17 +44,13 @@ export default class App extends Component {
       y: 20,
       zIndex: this.noteId,
     };
-    console.log(id);
     this.noteId++;
     this.setState({
       notes: this.state.notes.set(id, note),
     });
   }
 
-
   render() {
-    this.testmethod();
-    console.log(this.state.notes);
     return (
       <div>
         <NoteBar newNote={this.createNewNote} />
@@ -72,5 +63,5 @@ export default class App extends Component {
         }
       )}
       </div>
-  );
+    );
   }}
