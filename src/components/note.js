@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Draggable from 'react-draggable';
-import Textarea from 'react-textarea-autosize';
+import textarea from 'react-textarea-autosize';
 import marked from 'marked';
 
 class Note extends Component {
@@ -37,7 +37,7 @@ class Note extends Component {
 
   renderText() {
     if (this.state.isEditing) {
-      return <Textarea value={this.props.note.text} onChange={this.updateText} />;
+      return <textarea value={this.props.note.text} onChange={this.updateText} />;
     } else {
       return <div className="noteBody" dangerouslySetInnerHTML={{ __html: marked(this.props.note.text || '') }} />;
     }
@@ -69,16 +69,10 @@ class Note extends Component {
       >
         <div className="main">
           <div className="title-bar">
-            <div className="title">
-              <h1>{title}</h1>
-              {this.renderEdits()}
-            </div>
-            <div className="pictures">
-              <h4>
-                <i onClick={this.onDelete} className="fa fa-trash-o fa-3x" id="trash" />
-                <i className="note-mover fa fa-arrows-alt fa-3x" id="move" />
-              </h4>
-            </div>
+            <h1>{title}</h1>
+            {this.renderEdits()}
+            <i onClick={this.onDelete} className="fa fa-trash-o fa-3x" id="trash" />
+            <i className="note-mover fa fa-arrows-alt fa-3x" id="move" />
           </div>
           <div className="text-area">
             {this.renderText()}
