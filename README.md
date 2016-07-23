@@ -18,4 +18,7 @@ We used React to make separate components, one for notes, one for the notebar (w
 ### Issues
 One problem I encountered was the resizing of the notes when larger images or gifs were put in. I fixed this by changing the css file, ultimately making the text area inherit the width and height, as well as resize both fields, and I also changed position of the note to `fixed`.
 
-Another problem was when the note was being dragged, the position was not being updated correctly; this happened because I did not include the updateNote method in the render function in app.js. 
+Another problem was when the note was being dragged, the position was not being updated correctly; this happened because I did not include the updateNote method in the render function in app.js.
+
+### Extra Credit
+Visual styling of css, color, button/input field 
