@@ -6,7 +6,7 @@ import marked from 'marked';
 class Note extends Component {
   constructor(props) {
     super(props);
-    // init component state here
+    // init component state
     this.state = {
       isEditing: false,
     };

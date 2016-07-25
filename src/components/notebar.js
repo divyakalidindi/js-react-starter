@@ -10,6 +10,7 @@ class NoteBar extends Component {
     this.createNote = this.createNote.bind(this);
   }
 
+  // using event
   onInputChange(event) {
     this.setState({ newNoteTitle: event.target.value });
   }

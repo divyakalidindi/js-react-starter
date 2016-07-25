@@ -20,10 +20,6 @@ export default class App extends Component {
     this.createNewNote = this.createNewNote.bind(this);
   }
 
-  componentWillMount() {
-    // this.createNewNote('Welcome!');
-  }
-
   componentDidMount() {
     firebasedb.fetchNotes(notes => {
       const temp = Immutable.Map(notes);
@@ -32,21 +28,14 @@ export default class App extends Component {
   }
 
   deleteNote(id) {
-    // this.setState({
-    //   notes: this.state.notes.delete(id),
-    // });
     firebasedb.delNotes(id);
   }
 
   updateNote(id, fields) {
-    // this.setState({
-    //   notes: this.state.notes.update(id, (n) => { return Object.assign({}, n, fields); }),
-    // });
     firebasedb.updateNotes(id, fields);
   }
 
   createNewNote(title) {
-    // const id = this.noteId;
     const note = {
       title,
       text: '',
@@ -54,10 +43,6 @@ export default class App extends Component {
       y: 20,
       zIndex: this.noteId,
     };
-    // this.noteId++;
-    // this.setState({
-    //   notes: this.state.notes.set(id, note),
-    // });
     firebasedb.makeNotes(note);
   }
 
