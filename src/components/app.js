@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Immutable from 'immutable';
 import Note from './note';
 import NoteBar from './notebar';
+import * as firebasedb from './firebasedb';
 
 // example class based component (smart component)
 export default class App extends Component {
@@ -20,23 +21,32 @@ export default class App extends Component {
   }
 
   componentWillMount() {
-    this.createNewNote('Welcome!');
+    // this.createNewNote('Welcome!');
+  }
+
+  componentDidMount() {
+    firebasedb.fetchNotes(notes => {
+      const temp = Immutable.Map(notes);
+      this.setState({ notes: temp });
+    });
   }
 
   deleteNote(id) {
-    this.setState({
-      notes: this.state.notes.delete(id),
-    });
+    // this.setState({
+    //   notes: this.state.notes.delete(id),
+    // });
+    firebasedb.delNotes(id);
   }
 
   updateNote(id, fields) {
-    this.setState({
-      notes: this.state.notes.update(id, (n) => { return Object.assign({}, n, fields); }),
-    });
+    // this.setState({
+    //   notes: this.state.notes.update(id, (n) => { return Object.assign({}, n, fields); }),
+    // });
+    firebasedb.updateNotes(id, fields);
   }
 
   createNewNote(title) {
-    const id = this.noteId;
+    // const id = this.noteId;
     const note = {
       title,
       text: '',
@@ -44,10 +54,11 @@ export default class App extends Component {
       y: 20,
       zIndex: this.noteId,
     };
-    this.noteId++;
-    this.setState({
-      notes: this.state.notes.set(id, note),
-    });
+    // this.noteId++;
+    // this.setState({
+    //   notes: this.state.notes.set(id, note),
+    // });
+    firebasedb.makeNotes(note);
   }
 
   render() {
