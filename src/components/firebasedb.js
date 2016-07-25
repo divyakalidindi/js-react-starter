@@ -10,7 +10,6 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-
 export function fetchNotes(callback) {
   database.ref('notes').on('value', (snapshot) => {
     callback(snapshot.val());
